@@ -1,0 +1,21 @@
+<!-- todo_app/templates/todo_app/todolist_form.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ title }}</h1>  <!-- Display the title passed from the view, e.g., "Add a new list" -->
+
+    <form method="post">  <!-- Form for creating a new to-do list -->
+        {% csrf_token %}  <!-- Django CSRF token for security -->
+        
+        <div>
+            <label for="id_title">Title:</label>
+            {{ form.title }}  <!-- Render the 'title' field of the form -->
+        </div>
+
+        <button type="submit">Save</button>  <!-- Submit button to save the new to-do list -->
+    </form>
+
+    <a href="{% url 'index' %}">Back to List</a>  <!-- Link to go back to the to-do list page -->
+
+{% endblock %}
